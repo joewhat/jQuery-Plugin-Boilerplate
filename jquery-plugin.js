@@ -135,7 +135,8 @@
          * @return {[type]} Return something
          */
         someGetterMethod: function() {
-
+            this.options.onEventCallback.call(this, 'hello from callback');
+            return this.options.defaultOption;
         },
 
         /**
@@ -215,7 +216,8 @@
      * Default options
      */
     $.fn[pluginName].defaults = {
-        defaultOption: "I'm a default option"
+        defaultOption: "I'm a default option",
+        onEventCallback: function () {}
     };
 
 })(jQuery, window, document);
