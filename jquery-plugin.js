@@ -82,7 +82,7 @@
          *         
          */
         init: function() {
-
+            console.log(pluginName + ' init');
         },
 
         /**
@@ -98,7 +98,7 @@
          * element.
          */
         destroy: function() {
-
+            console.log(pluginName + 'destroy');
             // Remove any attached data from your plugin
             this.$el.removeData();
         },
@@ -148,7 +148,7 @@
          *  $('#element').jqueryPlugin('_pseudoPrivateMethod');  // Will not work
          */
         _pseudoPrivateMethod: function() {
-            
+            console.log(pluginName + ' _pseudoPrivateMethod');
         }
     };
 
