@@ -37,7 +37,7 @@
      * change the plugin's name
      * @type {String}
      */
-    var pluginName = 'jqueryPlugin';
+    const pluginName = 'jqueryPlugin';
  
     /**
      * The plugin constructor
@@ -82,6 +82,7 @@
          *         
          */
         init: function() {
+            let plugin = this; // use this to send plugin scope to private functions
             console.log(pluginName + ' init');
         },
 
@@ -156,7 +157,7 @@
      * This is a real private method. A plugin instance has access to it
      * @return {[type]}
      */
-    var privateMethod = function() {
+    const privateMethod = function() {
         console.log("privateMethod");
         console.log(this);
     };
@@ -175,7 +176,7 @@
      * });
      */
     $.fn[pluginName] = function(options) {
-        var args = arguments;
+        const args = arguments;
 
         if (options === undefined || typeof options === 'object') {
             // Creates a new plugin instance, for each selected element, and
@@ -192,12 +193,12 @@
                 // If the user does not pass any arguments and the method allows to
                 // work as a getter then break the chainability so we can return a value
                 // instead the element reference.
-                var instance = $.data(this[0], 'plugin_' + pluginName);
+                const instance = $.data(this[0], 'plugin_' + pluginName);
                 return instance[options].apply(instance, Array.prototype.slice.call(args, 1));
             } else {
                 // Invoke the speficied method on each selected element
                 return this.each(function() {
-                    var instance = $.data(this, 'plugin_' + pluginName);
+                    const instance = $.data(this, 'plugin_' + pluginName);
                     if (instance instanceof Plugin && typeof instance[options] === 'function') {
                         instance[options].apply(instance, Array.prototype.slice.call(args, 1));
                     }
